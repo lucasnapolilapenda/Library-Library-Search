@@ -8,7 +8,7 @@ import javax.xml.ws.Service;
 public class RequestSoap {
 
     public String getPublisher (String publisherName) throws Exception_Exception, MalformedURLException {
-        URL url = new URL ("http://localhost:9595/LibrarySearchPublisher_war/publisher?wsdl");
+        URL url = new URL ("http://localhost:8092/publishers/publisher?wsdl");
         QName qname = new QName("http://publisher.search.library.com/", "PublisherImpService");
         Service service = Service.create(url, qname);
         PublisherInterface publisher = service.getPort(PublisherInterface.class);

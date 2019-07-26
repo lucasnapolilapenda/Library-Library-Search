@@ -5,10 +5,10 @@ import javax.ws.rs.ext.RuntimeDelegate;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
-public class Publish {
+public class EntryPublisher {
 
-    private static final int port = 9080;
-    private static final String uri = "/LibrarySearchLibrary_war/";
+    private static final int port = 8080;
+    private static final String uri = "/library/";
     private static final String url = "http://localhost:" + port + uri;
 
 
@@ -24,7 +24,7 @@ public class Publish {
     }
 
     public static void main(String[ ] args) {
-        new Publish().publish();
+        new EntryPublisher().publish();
     }
     private void publish() {
         HttpServer server = getServer();
@@ -35,7 +35,7 @@ public class Publish {
         msg(server);
     }
     private void msg(HttpServer server) {
-        String out = "Publishing RestfulAdage on " + url + ". Hit any key to stop.";
+        String out = "Publishing Library on " + url + ". Hit any key to stop.";
         System.out.println(out);
         try {
             System.in.read();

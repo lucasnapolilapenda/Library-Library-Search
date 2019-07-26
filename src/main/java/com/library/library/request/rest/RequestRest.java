@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class RequestRest {
     Client client = Client.create();
-    String urlClient = "http://localhost:8080/ServerRest_war/service/search/search";
+    String urlClient = "http://localhost:8091/books/search/list";
 
     public ArrayList<Book> postRequestBook(Book book) throws MalformedURLException {
 
