@@ -13,12 +13,13 @@ import com.sun.jersey.api.client.WebResource;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 public class RequestRest {
     Client client = Client.create();
     String urlClient = "http://localhost:8080/ServerRest_war/service/search/search";
 
-    public Book postRequestBook(Book book) throws MalformedURLException {
+    public ArrayList<Book> postRequestBook(Book book) throws MalformedURLException {
 
         String url = urlClient;
         WebResource webResource = client.resource ( url );
@@ -27,7 +28,7 @@ public class RequestRest {
     }
 
 
-    public Book mapperBook(WebResource webResource, Book book, Boolean put)  {
+    public ArrayList<Book> mapperBook(WebResource webResource, Book book, Boolean put)  {
 
         ObjectMapper mapper = new ObjectMapper();
         String inputData = null;
@@ -54,9 +55,9 @@ public class RequestRest {
         return getBookInfo ( webResource, response );
     }
 
-    public Book getBookInfo(WebResource webResource, ClientResponse response)  {
+    public ArrayList<Book> getBookInfo(WebResource webResource, ClientResponse response)  {
+        ArrayList<Book> bookArrayList = new ArrayList<>();
 
-        Book b = new Book ();
         if(response.getStatus()!=200){
             throw new RuntimeException("HTTP Error: "+ response.getStatus());
         }
@@ -67,7 +68,7 @@ public class RequestRest {
             for (Book jBook : arrayBook ) {
                 System.out.println ( "------------------------------------------------" );
                 System.out.println ("ID: " + jBook.getAuthor () + " / " + "Title: " + jBook.getTitle ());
-
+                Book b = new Book ();
                 b.setIsbn(jBook.getIsbn());
                 b.setTitle(jBook.getTitle());
                 b.setAuthor(jBook.getAuthor());
@@ -75,6 +76,7 @@ public class RequestRest {
                 b.setIsbn(jBook.getIsbn());
                 b.setPublishingDate(jBook.getPublishingdate());
                 b.setSummary(jBook.getSummary());
+                bookArrayList.add(b);
                 try {
                     b.setPublisher(new RequestSoap().getPublisher(jBook.getPublisher()));
                     System.out.println(new RequestSoap().getPublisher(jBook.getPublisher()));
@@ -86,6 +88,6 @@ public class RequestRest {
             e.printStackTrace ( );
         }
         System.out.println ( "------------------------------------------------" );
-        return b;
+        return bookArrayList;
     }
 }
