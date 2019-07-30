@@ -76,13 +76,13 @@ public class RequestRest {
                 b.setIsbn(jBook.getIsbn());
                 b.setPublishingDate(jBook.getPublishingdate());
                 b.setSummary(jBook.getSummary());
-                bookArrayList.add(b);
                 try {
                     b.setPublisher(new RequestSoap().getPublisher(jBook.getPublisher()));
                     System.out.println(new RequestSoap().getPublisher(jBook.getPublisher()));
                 } catch (Exception_Exception e) {
                     e.printStackTrace();
                 }
+                bookArrayList.add(b);
             }
         } catch (IOException e) {
             e.printStackTrace ( );
