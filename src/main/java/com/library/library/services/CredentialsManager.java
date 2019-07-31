@@ -2,7 +2,6 @@ package com.library.library.services;
 
 import sun.misc.BASE64Decoder;
 
-import javax.servlet.ServletContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 
@@ -54,7 +53,6 @@ public class CredentialsManager  {
         } catch (FileNotFoundException e) {
             System.out.println("Error: " + e);
         }
-        System.out.println("aca1");
         int id = 0;
         if (in != null) {
             try{

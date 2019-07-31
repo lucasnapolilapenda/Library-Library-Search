@@ -52,10 +52,10 @@ public class RequestRest {
                 throw new RuntimeException ( "HTTP Error: " + response.getStatus ( ) );
             }
         }
-        return getBookInfo ( webResource, response );
+        return getBookInfo (  response );
     }
 
-    public ArrayList<Book> getBookInfo(WebResource webResource, ClientResponse response)  {
+    public ArrayList<Book> getBookInfo( ClientResponse response)  {
         ArrayList<Book> bookArrayList = new ArrayList<>();
 
         if(response.getStatus()!=200){
