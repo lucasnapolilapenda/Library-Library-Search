@@ -10,6 +10,7 @@ import com.library.library.request.soap.RequestSoap;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import sun.misc.BASE64Encoder;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -23,12 +24,12 @@ public class RequestRest {
 
         String url = urlClient;
         WebResource webResource = client.resource ( url );
-        return mapperBook ( webResource, book, false);
+        return mapperBook ( webResource, book);
 
     }
 
 
-    public ArrayList<Book> mapperBook(WebResource webResource, Book book, Boolean put)  {
+    public ArrayList<Book> mapperBook(WebResource webResource, Book book)  {
 
         ObjectMapper mapper = new ObjectMapper();
         String inputData = null;
@@ -38,20 +39,21 @@ public class RequestRest {
             inputData = mapper.writeValueAsString(book);
             System.out.println(inputData);
         } catch (JsonProcessingException e) {
-            e.printStackTrace ( );
+            System.out.println("Error: " + e);
         }
-        if (put){
-            response = webResource.type ( "application/json" ).put ( ClientResponse.class, inputData );
-            if (response.getStatus ( ) != 200) {
-                throw new RuntimeException ( "HTTP Error: " + response.getStatus ( ) );
-            }
+
+        response = webResource.type ( "application/json" )
+                .header("Authorization", "Basic " + securityEncoder())
+                .post ( ClientResponse.class, inputData );
+
+        if (response.getStatus ( ) != 200) {
+            throw new RuntimeException ( "HTTP Error: " + response.getStatus ( ) );
         }
-        else {
-            response = webResource.type ( "application/json" ).post ( ClientResponse.class, inputData );
-            if (response.getStatus ( ) != 200) {
-                throw new RuntimeException ( "HTTP Error: " + response.getStatus ( ) );
-            }
+
+        if (response == null) {
+            System.out.println("Check app credentials configuration");
         }
+
         return getBookInfo (  response );
     }
 
@@ -80,14 +82,20 @@ public class RequestRest {
                     b.setPublisher(new RequestSoap().getPublisher(jBook.getPublisher()));
                     System.out.println(new RequestSoap().getPublisher(jBook.getPublisher()));
                 } catch (Exception_Exception e) {
-                    e.printStackTrace();
+                    System.out.println("Error: " + e);
                 }
                 bookArrayList.add(b);
             }
         } catch (IOException e) {
-            e.printStackTrace ( );
+            System.out.println("Error: " + e);
         }
         System.out.println ( "------------------------------------------------" );
         return bookArrayList;
+    }
+
+    private String securityEncoder (){
+        String userPassword = "book-service:book-service-secure-password-1234";
+        String authStringEnc = new BASE64Encoder().encode(userPassword.getBytes());
+        return authStringEnc;
     }
 }

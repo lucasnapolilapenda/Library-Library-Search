@@ -42,11 +42,9 @@ public class CredentialsManager  {
             System.out.println("Error: " + e);
         }
         decodedAuth = new String(bytes);
-        System.out.println(decodedAuth);
         ConcurrentHashMap<Integer, Auth> credentials = new ConcurrentHashMap<Integer, Auth>();
 
         String fileName = "/Users/lucasnapoli/Documentos Lucas/Projects/Mcgill/WebServices/Assingment4Micro/LibrarySearchLibrary/src/main/java/com/library/library/services/credentials.txt";
-        System.out.println("aca0");
         InputStream in = null;
         try {
             in = new FileInputStream(fileName);
