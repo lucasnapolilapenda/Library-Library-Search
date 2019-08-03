@@ -44,7 +44,7 @@ public class CredentialsManager  {
         decodedAuth = new String(bytes);
         ConcurrentHashMap<Integer, Auth> credentials = new ConcurrentHashMap<Integer, Auth>();
 
-        String fileName = "/Users/lucasnapoli/Documentos Lucas/Projects/Mcgill/WebServices/Assingment4Micro/LibrarySearchLibrary/src/main/java/com/library/library/services/credentials.txt";
+        String fileName = "src/main/webapp/WEB-INF/users.txt";
         InputStream in = null;
         try {
             in = new FileInputStream(fileName);
