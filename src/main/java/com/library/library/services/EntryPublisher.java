@@ -1,10 +1,11 @@
 package com.library.library.services;
 
 /**
- * Service call book info with publisher
- * @param authString authorization credentials
- * @return List of books with publisher
  *
+ * @author Lucas Napoli
+ * V1.0
+ * Library Microservices
+ * Service search Consolidator
  */
 
 import java.net.InetSocketAddress;
