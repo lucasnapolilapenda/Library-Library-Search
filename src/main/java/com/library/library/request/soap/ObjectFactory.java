@@ -41,7 +41,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Exception }
-     * 
+     * @return exception
      */
     public Exception createException() {
         return new Exception();
@@ -49,7 +49,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Publisher }
-     * 
+     * @return exception exception
      */
     public Publisher createPublisher() {
         return new Publisher();
@@ -57,7 +57,8 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Exception }{@code >}}
-     * 
+     * @param value value
+     * @return JAX JAX
      */
     @XmlElementDecl(namespace = "http://publisher.search.library.com/", name = "Exception")
     public JAXBElement<Exception> createException(Exception value) {

@@ -32,6 +32,7 @@ public class CredentialsManager  {
     /**
      * Instance to authenticate
      * @param context URI
+     * @return Intance Intance
      */
 
 

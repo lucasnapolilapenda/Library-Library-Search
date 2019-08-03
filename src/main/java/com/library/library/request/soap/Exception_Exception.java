@@ -30,8 +30,8 @@ public class Exception_Exception
 
     /**
      * 
-     * @param faultInfo
-     * @param message
+     * @param faultInfo Fault
+     * @param message message
      */
     public Exception_Exception(String message, Exception faultInfo) {
         super(message);
@@ -40,9 +40,9 @@ public class Exception_Exception
 
     /**
      * 
-     * @param faultInfo
-     * @param cause
-     * @param message
+     * @param faultInfo fault
+     * @param cause cause
+     * @param message message
      */
     public Exception_Exception(String message, Exception faultInfo, Throwable cause) {
         super(message, cause);

@@ -30,7 +30,7 @@ public class RequestSoap {
      * Service call to get publisher information
      * @param publisherName publisher name
      * @return String String
-     *
+     * @throws Exception_Exception La exception, y el reorno del rey
      */
     public String getPublisher (String publisherName) throws Exception_Exception {
         URL url = null;

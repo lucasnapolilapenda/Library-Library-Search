@@ -34,10 +34,10 @@ public interface PublisherInterface {
 
     /**
      * 
-     * @param arg0
+     * @param arg0 arguments
      * @return
      *     returns java.lang.String
-     * @throws Exception_Exception
+     * @throws Exception_Exception exception
      */
     @WebMethod
     @WebResult(partName = "return")

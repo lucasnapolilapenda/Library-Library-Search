@@ -39,6 +39,7 @@ public class LibraryServices {
     /**
      * Service call book info with publisher
      * @param authString authorization credentials
+     * @param book Book
      * @return List of books with publisher
      *
      */
