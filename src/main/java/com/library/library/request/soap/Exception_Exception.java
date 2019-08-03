@@ -1,5 +1,13 @@
 package com.library.library.request.soap;
 
+/**
+ *
+ * @author Lucas Napoli
+ * V1.0
+ * Library Microservices
+ * Service search Consolidator
+ */
+
 import javax.xml.ws.WebFault;
 
 

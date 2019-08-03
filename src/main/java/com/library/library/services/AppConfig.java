@@ -1,5 +1,13 @@
 package com.library.library.services;
 
+/**
+ *
+ * @author Lucas Napoli
+ * V1.0
+ * Library Microservices
+ * Service search Consolidator
+ */
+
 
 import java.util.Collections;
 import java.util.HashMap;

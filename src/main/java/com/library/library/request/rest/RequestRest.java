@@ -1,5 +1,13 @@
 package com.library.library.request.rest;
 
+/**
+ *
+ * @author Lucas Napoli
+ * V1.0
+ * Library Microservices
+ * Service search Consolidator
+ */
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.library.library.services.Book;
@@ -16,6 +24,10 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
+/**
+ * Request service to the Book Microservice REST
+ */
+
 public class RequestRest {
     Client client = Client.create();
     String urlClient = "http://localhost:8091/books/search/list";
@@ -27,6 +39,13 @@ public class RequestRest {
         return mapperBook ( webResource, book);
 
     }
+
+    /**
+     * Mapper Book
+     * @param webResource WebResource
+     * @param book Book Object
+     * @return ArrayList of Books
+     */
 
 
     public ArrayList<Book> mapperBook(WebResource webResource, Book book)  {
@@ -56,6 +75,13 @@ public class RequestRest {
 
         return getBookInfo (  response );
     }
+
+
+    /**
+     * Mapper constructor info
+     * @param response from response
+     * @return ArrayList of Books
+     */
 
     public ArrayList<Book> getBookInfo( ClientResponse response)  {
         ArrayList<Book> bookArrayList = new ArrayList<>();
@@ -92,6 +118,11 @@ public class RequestRest {
         System.out.println ( "------------------------------------------------" );
         return bookArrayList;
     }
+
+    /**
+     * String Credential constructor
+     * @return String with credentials
+     */
 
     private String securityEncoder (){
         String userPassword = "book-service:book-service-secure-password-1234";

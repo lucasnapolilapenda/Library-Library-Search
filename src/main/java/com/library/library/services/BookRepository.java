@@ -1,5 +1,13 @@
 package com.library.library.services;
 
+/**
+ *
+ * @author Lucas Napoli
+ * V1.0
+ * Library Microservices
+ * Service search Consolidator
+ */
+
 import sun.misc.BASE64Decoder;
 
 import java.io.BufferedReader;
@@ -12,11 +20,16 @@ import javax.ws.rs.core.UriInfo;
 
 /**
  *
- * @lucasnapoli
+ * Book Repository
  */
 public class BookRepository {
 
     private ConcurrentHashMap<Integer, Book> map;
+
+    /**
+     *
+     * Creation
+     */
 
     private BookRepository() {
         map = new ConcurrentHashMap<Integer, Book>();

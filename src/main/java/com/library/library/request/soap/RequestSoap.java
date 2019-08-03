@@ -1,5 +1,13 @@
 package com.library.library.request.soap;
 
+/**
+ *
+ * @author Lucas Napoli
+ * V1.0
+ * Library Microservices
+ * Service search Consolidator
+ */
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
@@ -11,10 +19,26 @@ import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
 import javax.xml.ws.handler.MessageContext;
 
+/**
+ * SOAP Call to Publisher
+ */
+
 public class RequestSoap {
 
-    public String getPublisher (String publisherName) throws Exception_Exception, MalformedURLException {
-        URL url = new URL ("http://localhost:8092/publishers/publisher?wsdl");
+
+    /**
+     * Service call to get publisher information
+     * @param publisherName publisher name
+     * @return String String
+     *
+     */
+    public String getPublisher (String publisherName)  {
+        URL url = null;
+        try {
+            url = new URL("http://localhost:8092/publishers/publisher?wsdl");
+        } catch (MalformedURLException e) {
+            System.out.println("Error: " + e);
+        }
         QName qname = new QName("http://publisher.search.library.com/", "PublisherImpService");
         Service service = Service.create(url, qname);
         PublisherInterface publisher = service.getPort(PublisherInterface.class);
@@ -29,7 +53,13 @@ public class RequestSoap {
 
         Publisher publisher1 = new Publisher();
         publisher1.setPublisherName(publisherName);
-        return publisher.getPublisherInfo(publisher1);
+        try {
+            return publisher.getPublisherInfo(publisher1);
+        } catch (Exception_Exception e) {
+            System.out.println("error:" + e);
+        }
+
+        return "Error: no publisher located";
     }
 
 }

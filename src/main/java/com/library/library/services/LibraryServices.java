@@ -1,5 +1,13 @@
 package com.library.library.services;
 
+/**
+ *
+ * @author Lucas Napoli
+ * V1.0
+ * Library Microservices
+ * Service search Consolidator
+ */
+
 import com.library.library.request.rest.RequestRest;
 
 import javax.ws.rs.*;
@@ -10,7 +18,9 @@ import javax.ws.rs.core.UriInfo;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
-
+/**
+ *Class to manage services
+ */
 
 @Path( "/search" )
 public class LibraryServices {
@@ -20,8 +30,18 @@ public class LibraryServices {
     private UriInfo context;
 
 
+
+
     public LibraryServices() {
     }
+
+
+    /**
+     * Service call book info with publisher
+     * @param authString authorization credentials
+     * @return List of books with publisher
+     *
+     */
 
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
@@ -39,6 +59,13 @@ public class LibraryServices {
         }
         return null;
     }
+
+    /**
+     * Service to validate credentials
+     * @param authString authorization credentials
+     * @return Message to the user with the request status
+     *
+     */
 
     @POST
     @Consumes({MediaType.APPLICATION_JSON})

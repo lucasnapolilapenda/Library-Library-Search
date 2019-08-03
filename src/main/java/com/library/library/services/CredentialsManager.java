@@ -1,5 +1,13 @@
 package com.library.library.services;
 
+/**
+ *
+ * @author Lucas Napoli
+ * V1.0
+ * Library Microservices
+ * Service search Consolidator
+ */
+
 import sun.misc.BASE64Decoder;
 
 import javax.ws.rs.core.Context;
@@ -7,6 +15,11 @@ import javax.ws.rs.core.UriInfo;
 
 import java.io.*;
 import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ *
+ * Class to manage creentials
+ */
 
 
 public class CredentialsManager  {
@@ -16,11 +29,22 @@ public class CredentialsManager  {
 
     private static CredentialsManager instance = null;
 
+    /**
+     * Instance to authenticate
+     * @param context URI
+     */
+
 
     public static CredentialsManager getInstance(UriInfo context) {
         return instance == null && context != null ?
                 (instance = new CredentialsManager()) : instance;
     }
+
+    /**
+     * Authentication Process decode
+     * @param authString String to authenticate
+     * @return Boolean if the auth is OK
+     */
 
     public boolean isUserAuthenticated(String authString){
 

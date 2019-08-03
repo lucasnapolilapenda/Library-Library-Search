@@ -3,6 +3,9 @@ package com.library.library.services;
 /**
  *
  * @author Lucas Napoli
+ * V1.0
+ * Library Microservices
+ * Service search Consolidator
  */
 public class Book implements Cloneable {
 
