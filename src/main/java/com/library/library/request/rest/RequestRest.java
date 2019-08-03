@@ -78,7 +78,7 @@ public class RequestRest {
 
 
     /**
-     * Mapper constructor info
+     * Mapper contructor info
      * @param response from response
      * @return ArrayList of Books
      */

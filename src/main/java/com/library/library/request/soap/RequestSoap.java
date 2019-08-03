@@ -32,7 +32,7 @@ public class RequestSoap {
      * @return String String
      *
      */
-    public String getPublisher (String publisherName)  {
+    public String getPublisher (String publisherName) throws Exception_Exception {
         URL url = null;
         try {
             url = new URL("http://localhost:8092/publishers/publisher?wsdl");
@@ -53,13 +53,8 @@ public class RequestSoap {
 
         Publisher publisher1 = new Publisher();
         publisher1.setPublisherName(publisherName);
-        try {
             return publisher.getPublisherInfo(publisher1);
-        } catch (Exception_Exception e) {
-            System.out.println("error:" + e);
-        }
 
-        return "Error: no publisher located";
     }
 
 }

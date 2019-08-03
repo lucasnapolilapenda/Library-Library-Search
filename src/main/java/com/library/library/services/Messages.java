@@ -18,18 +18,30 @@ public class Messages {
     String status;
 
     /**
-     *@param status String
-     *
+     *@return status status
      */
+    public String getStatus() {
+        return status;
+    }
 
+    /**
+     *@param status String
+     */
 
     public void setStatus(String status) {
         this.status = status;
     }
 
     /**
+     *@return alert status
+     */
+
+    public String getAlert() {
+        return alert;
+    }
+
+    /**
      *@param alert String
-     *
      */
 
     public void setAlert(String alert) {
